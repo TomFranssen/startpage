@@ -34,7 +34,7 @@ gulp.task('clean-javascript', function() {
 });
 
 gulp.task('javascript', ['clean-javascript'], function () {
-    gulp.src(['source/js/*.js', 'node_modules/material-design-lite/material.js'])
+    gulp.src(['source/js/*.js'])
         .pipe(gulpUglify())
         .pipe(gulpConcat('main.js'))
         .pipe(gulp.dest('target/js'));

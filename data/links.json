@@ -1,0 +1,16 @@
+{
+  "links": [
+    {
+      "name" : "501st.nl",
+      "url" : "http://www.501st.nl"
+    },
+    {
+      "name" : "forum",
+      "url" : "http://forum.501st.nl"
+    },
+    {
+      "name" : "starwars.com",
+      "url" : "http://www.starwars.com"
+    }
+  ]
+}

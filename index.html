@@ -5,16 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Startpage">
         <link rel="stylesheet" href="target/css/main.css" />
-        <script src="target/js/main.js"></script>
     </head>
     <body>
         <div class="container">
             <div class="page-header">
-                <h1>Dutch Garrison Start</h1>
+                <h1>Start Page</h1>
             </div>
-            <div class="well well-lg">
-                Loading...
-            </div>
+            <ul data-bind="foreach: links" class="list-unstyled">
+                <li>
+                    <div data-bind="text: name"></div>
+                    <div data-bind="text: url"></div>
+                </li>
+            </ul>
         </div>
+        <script src="//cdn.jsdelivr.net/pouchdb/6.1.2/pouchdb.min.js"></script>
+        <script src="target/js/main.js"></script>
     </body>
 </html>

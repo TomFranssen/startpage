@@ -15,7 +15,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.0",
     "knockout": "^3.4.2",
-    "knockout-mapping": "^2.6.0"
+    "knockout-mapping": "^2.6.0",
+    "sw-precache": "^5.1.1"
   },
   "dependencies": {
     "pouchdb-browser": "^6.1.2"

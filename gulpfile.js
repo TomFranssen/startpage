@@ -10,7 +10,7 @@ const gulp = require('gulp'),
     gulpRimraf = require('gulp-rimraf');
 
 gulp.task('clean-css', function() {
-    return gulp.src('target/css/**/*.*', {
+    return gulp.src('app/css/**/*.*', {
         read: false
     }).pipe(gulpRimraf());
 });
@@ -24,7 +24,7 @@ gulp.task('scss', ['clean-css'], function () {
         .pipe(gulpAutoprefixer({
             browsers : ['last 2 versions']
         }))
-        .pipe(gulp.dest('target/css'))
+        .pipe(gulp.dest('app/css'))
         .pipe(gulpLivereload());
 });
 
@@ -45,7 +45,7 @@ gulp.task('javascript', ['clean-javascript'], function () {
         }))
         // .pipe(gulpUglify())
         .pipe(gulpConcat('main.js'))
-        .pipe(gulp.dest('target/js'));
+        .pipe(gulp.dest('app/js'));
 });
 
 gulp.task('watch', function () {
@@ -60,6 +60,27 @@ gulp.task('watch', function () {
             console.log('JS file ' + event.path + ' was ' + event.type);
         }
     );
+});
+
+gulp.task('generate-service-worker', function(callback) {
+    var swPrecache = require('sw-precache');
+    var rootDir = 'app';
+
+    swPrecache.write(`${rootDir}/service-worker.js`, {
+        staticFileGlobs: [rootDir + '/**/*.{php,js,html,css,png,jpg,gif,svg,eot,ttf,woff,json}'],
+        stripPrefix: rootDir,
+        maximumFileSizeToCacheInBytes: 10097152,
+        runtimeCaching: [{
+            urlPattern: /^https:\/\/scontent\.cdninstagram\.com/,
+            handler: 'networkFirst',
+            options: {
+                cache: {
+                    maxEntries: 50,
+                    name: 'instagram-images-cache'
+                }
+            }
+        }]
+    }, callback);
 });
 
 gulp.task('build', ['scss', 'javascript']);

@@ -24,7 +24,7 @@ ko.applyBindings(viewModel.instagram, document.getElementById('data-bind-instagr
 
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').then( function (swRegistration) {
+    navigator.serviceWorker.register('service-worker.js').then( function (swRegistration) {
 
         var serviceWorker;
 
